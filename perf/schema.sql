@@ -1,0 +1,17 @@
+USE dingping;
+CREATE TABLE IF NOT EXISTS tb_voucher_order (
+  id BIGINT UNSIGNED NOT NULL,
+  user_id BIGINT UNSIGNED NOT NULL,
+  voucher_id BIGINT UNSIGNED NOT NULL,
+  pay_type TINYINT UNSIGNED DEFAULT 1,
+  status TINYINT UNSIGNED DEFAULT 1,
+  create_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  pay_time TIMESTAMP NULL,
+  use_time TIMESTAMP NULL,
+  refund_time TIMESTAMP NULL,
+  update_time TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id),
+  UNIQUE KEY uk_user_voucher (user_id, voucher_id),
+  KEY idx_voucher_id (voucher_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
